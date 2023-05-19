@@ -16,18 +16,22 @@ int main() {
     printf("          \\__|_|__/                              \n");
     printf("\n\n");
 
-    // Definimos uma variavel que representa o número a ser acertado, ela sera um numero aliatorio
+    // Pegamos o tempo passado em segundos desde 01 de janeiro de 1970 e 
+    // passamos ela como parametro para rand
     int temp = time(0);
     srand(temp);
 
+    // Gera um número aleatorio usando como paramentro temp, mas esse numero
+    // muito grande, então dividimos ele por 100 e guardandomos o resto
     int nun_grade = rand();
     int nun = nun_grade%100;
     
-    //
+    // Criamos algumar variaveis contadoras
     int tentavivas = 1;
     int chute;
     double pontos = 1000;
 
+    
     int rels = 0;
     int dificuldade;
     int nivel;
@@ -55,7 +59,8 @@ int main() {
 
     // Loop de tentativas do usuario
     for(int i = 1; i <= nivel; i++){
-        // Resebe chute do usuario
+        // Imprime a quantidade de chutes atual do usuario e recebe um 
+        // chute do usuario. Depois informa ao mesmo esse chute
         printf("\nTentativa %d\n", tentavivas);
         printf("Qual é o seu chute? ");
         scanf("%d", &chute);
@@ -68,6 +73,8 @@ int main() {
             continue;
         }
 
+        // Define algumas variaveis verificadoras, que pode ser 1 (verdadeiro) 
+        // ou 0 (falso).
         rels = nun == chute;
         int dica = nun > chute;
 
@@ -82,9 +89,11 @@ int main() {
             printf("Não é esse, tente um número menor\n");
         }
 
+        // A cada tentativa errada tira uma quantidade de pontos do usuario 
         double perdidos = abs((chute - nun)) / (double)2;
         pontos -= perdidos;
 
+        // Almente em 1 o contador de tentativas
         tentavivas++;        
     }
 

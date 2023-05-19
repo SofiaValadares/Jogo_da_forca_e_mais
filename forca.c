@@ -72,7 +72,7 @@ void chuta(){
     printf("\nChute uma letra: ");
     scanf(" %c", &ch);
 
-    if(letra_existe(ch)) {
+    if(!letra_existe(ch)) {
         printf("Você acertou: a palavra tem a letra %c\n\n", ch);
     } else {
         printf("\nVocê errou: a palavra NÃO tem a letra %c\n\n", ch);
